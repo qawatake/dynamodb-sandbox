@@ -10,6 +10,8 @@
 ## ローカル用のaws configファイルを参照するように設定
 
 ```sh
+# direnvとawscliをインストール
+aqua i
 # ローカルのaws config/credentialsを参照するように環境変数を設定
 cp .envrc.sample .envrc
 direnv allow
