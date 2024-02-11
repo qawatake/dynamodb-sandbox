@@ -10,7 +10,13 @@ docker compose up -d
 aws dynamodb list-tables
 ```
 
-## ローカル用のconfigファイルの
+## ローカル用のconfigファイルの作成
+
+```sh
+# ローカルのaws config/credentialsを参照するように環境変数を設定
+cp .envrc.sample .envrc
+direnv allow
+```
 
 - [共有 config ファイルと 共有 credentials ファイルの場所 - AWSSDK とツール](https://docs.aws.amazon.com/ja_jp/sdkref/latest/guide/file-location.html)
   - configファイルのパスを変更できるよ。
@@ -91,4 +97,43 @@ aws dynamodb update-item \
     --return-values ALL_NEW
 ```
 
-## 
+## クエリ
+
+[ステップ 5: テーブルのデータをクエリします - Amazon DynamoDB](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/getting-started-step-5.html)
+
+```sh
+aws dynamodb query \
+    --table-name Music \
+    --key-condition-expression "Artist = :name" \
+    --expression-attribute-values  '{":name":{"S":"Acme Band"}}'
+
+aws dynamodb query \
+    --table-name Music \
+    --key-condition-expression "Artist = :x and begins_with(SongTitle, :name)" \
+    --expression-attribute-values  '{":name":{"S":"H"}, ":x": {"S": "Acme Band"}}'
+```
+
+## GSI
+
+[ステップ 6: グローバルセカンダリインデックスを作成します - Amazon DynamoDB](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/getting-started-step-6.html)
+
+```sh
+aws dynamodb update-table \
+    --table-name Music \
+    --attribute-definitions AttributeName=AlbumTitle,AttributeType=S \
+    --global-secondary-index-updates \
+        "[{\"Create\":{\"IndexName\": \"AlbumTitle-index\",\"KeySchema\":[{\"AttributeName\":\"AlbumTitle\",\"KeyType\":\"HASH\"}], \
+        \"ProvisionedThroughput\": {\"ReadCapacityUnits\": 10, \"WriteCapacityUnits\": 5      },\"Projection\":{\"ProjectionType\":\"ALL\"}}}]"
+```
+
+## GSI クエリ
+
+[ステップ 7: グローバルセカンダリインデックスをクエリします - Amazon DynamoDB](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/getting-started-step-7.html)
+
+```sh
+aws dynamodb query \
+    --table-name Music \
+    --index-name AlbumTitle-index \
+    --key-condition-expression "AlbumTitle = :name" \
+    --expression-attribute-values  '{":name":{"S":"Somewhat Famous"}}'
+```
