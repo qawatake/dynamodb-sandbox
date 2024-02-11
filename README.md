@@ -19,6 +19,8 @@ aws dynamodb list-tables
 
 ## テーブル作成
 
+[ステップ 1: テーブルを作成します - Amazon DynamoDB](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/getting-started-step-1.html)
+
 ```sh
 aws dynamodb create-table \
     --table-name Music \
@@ -42,5 +44,51 @@ aws dynamodb list-tables
 
 ## データ投入
 
+[ステップ 2: コンソールまたは AWS CLI を使用して、テーブルにデータを書き込みます - Amazon DynamoDB](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/getting-started-step-2.html)
+
 ```sh
+aws dynamodb put-item \
+    --table-name Music  \
+    --item \
+        '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Call Me Today"}, "AlbumTitle": {"S": "Somewhat Famous"}, "Awards": {"N": "1"}}'
+
+aws dynamodb put-item \
+    --table-name Music  \
+    --item \
+        '{"Artist": {"S": "No One You Know"}, "SongTitle": {"S": "Howdy"}, "AlbumTitle": {"S": "Somewhat Famous"}, "Awards": {"N": "2"}}'
+
+aws dynamodb put-item \
+    --table-name Music \
+    --item \
+        '{"Artist": {"S": "Acme Band"}, "SongTitle": {"S": "Happy Day"}, "AlbumTitle": {"S": "Songs About Life"}, "Awards": {"N": "10"}}'
+
+aws dynamodb put-item \
+    --table-name Music \
+    --item \
+        '{"Artist": {"S": "Acme Band"}, "SongTitle": {"S": "PartiQL Rocks"}, "AlbumTitle": {"S": "Another Album Title"}, "Awards": {"N": "8"}}'
 ```
+
+## データ取得
+
+[ステップ 3: テーブルからデータを読み込みます - Amazon DynamoDB](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/getting-started-step-3.html)
+
+```sh
+aws dynamodb get-item --consistent-read \
+    --table-name Music \
+    --key '{ "Artist": {"S": "Acme Band"}, "SongTitle": {"S": "Happy Day"}}'
+```
+
+## データ更新
+
+[ステップ 4: テーブルのデータを更新します - Amazon DynamoDB](https://docs.aws.amazon.com/ja_jp/amazondynamodb/latest/developerguide/getting-started-step-4.html)
+
+```sh
+aws dynamodb update-item \
+    --table-name Music \
+    --key '{ "Artist": {"S": "Acme Band"}, "SongTitle": {"S": "Happy Day"}}' \
+    --update-expression "SET AlbumTitle = :newval" \
+    --expression-attribute-values '{":newval":{"S":"Updated Album Title"}}' \
+    --return-values ALL_NEW
+```
+
+## 
