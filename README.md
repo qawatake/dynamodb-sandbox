@@ -160,3 +160,20 @@ DynamoDB localを動かしながら、connection localを選択する。
 - [Modeling data with Amazon DynamoDB - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/dynamodb-data-modeling/welcome.html)
   - ベストプラクティスがまとまっているみたい。
   - ちなみに、これは[AWS 規範的ガイダンス](https://aws.amazon.com/jp/prescriptive-guidance/?apg-all-cards.sort-by=item.additionalFields.sortDate&apg-all-cards.sort-order=desc&awsf.apg-new-filter=*all&awsf.apg-content-type-filter=*all&awsf.apg-code-filter=*all&awsf.apg-category-filter=*all&awsf.apg-rtype-filter=*all&awsf.apg-isv-filter=*all&awsf.apg-product-filter=*all&awsf.apg-env-filter=*all&apg-all-cards.q=dynamodb&apg-all-cards.q_operator=AND&awsm.page-apg-all-cards=1)でdynamodbと検索すると出てきた。
+
+## dynamolock
+
+### dynamolockとは？
+
+[Building Distributed Locks with the DynamoDB Lock Client | AWS Database Blog](https://aws.amazon.com/jp/blogs/database/building-distributed-locks-with-the-dynamodb-lock-client/)
+
+- ここで紹介されているのはjava用のライブラリっぽい。
+
+### dynamolockのgo package
+
+- [cirello-io - dynamolock/v2/README.md at master · cirello-io/dynamolock](https://github.com/cirello-io/dynamolock/blob/master/v2/README.md)
+- [mashiike - mashiike/setddblock: Distributed locking using Amazon DynamoDB](https://github.com/mashiike/setddblock)
+  - cliもあるっぽい。
+  - [社内発OSSのドッグフーディングでみんな捗る！ - KAYAC engineers' blog](https://techblog.kayac.com/oss-dogfooding) で紹介されてた。
+  - そもそもsetlockという古いツールがあるらしい。
+    - [setlockを使って簡単に多重起動防止機能を実装する #Linux - Qiita](https://qiita.com/mogulla3/items/0a955196c524712f48ba)
