@@ -137,3 +137,15 @@ aws dynamodb query \
     --key-condition-expression "AlbumTitle = :name" \
     --expression-attribute-values  '{":name":{"S":"Somewhat Famous"}}'
 ```
+
+## NoSQL Workbench
+
+[項目の操作を行う｜NoSQL Workbenchで学ぶAmazon DynamoDB](https://zenn.dev/nobkovskii/books/d160fe953e0121/viewer/84ffcc)
+
+DynamoDB localを動かしながら、connection localを選択する。
+
+## 設計
+
+[Modeling data with Amazon DynamoDB - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/dynamodb-data-modeling/welcome.html) にベストプラクティスがまとまっているみたい。
+
+ちなみに、これは[AWS 規範的ガイダンス](https://aws.amazon.com/jp/prescriptive-guidance/?apg-all-cards.sort-by=item.additionalFields.sortDate&apg-all-cards.sort-order=desc&awsf.apg-new-filter=*all&awsf.apg-content-type-filter=*all&awsf.apg-code-filter=*all&awsf.apg-category-filter=*all&awsf.apg-rtype-filter=*all&awsf.apg-isv-filter=*all&awsf.apg-product-filter=*all&awsf.apg-env-filter=*all&apg-all-cards.q=dynamodb&apg-all-cards.q_operator=AND&awsm.page-apg-all-cards=1)でdynamodbと検索すると出てきた。
