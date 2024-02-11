@@ -1,16 +1,6 @@
 # dynamodb-sandbox
 
-## セットアップ
-
-- [Deploying DynamoDB locally on your computer - Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html)
-  - とりあえず、dockerを使う方式で。
-
-```sh
-docker compose up -d
-aws dynamodb list-tables
-```
-
-## ローカル用のconfigファイルの作成
+## ローカル用のaws configファイルを参照するように設定
 
 ```sh
 # ローカルのaws config/credentialsを参照するように環境変数を設定
@@ -22,6 +12,16 @@ direnv allow
   - configファイルのパスを変更できるよ。
 - [[アップデート] AWSのサービスエンドポイントを表す環境変数とプロファイル設定が増えました | DevelopersIO](https://dev.classmethod.jp/articles/aws-endpoint-url-environment-varable-is-supported-on-sdks/)
   - endpointもconfigファイルに記載できるよ。
+
+## セットアップ
+
+- [Deploying DynamoDB locally on your computer - Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html)
+  - とりあえず、dockerを使う方式で。
+
+```sh
+docker compose up -d
+aws dynamodb list-tables
+```
 
 ## テーブル作成
 
