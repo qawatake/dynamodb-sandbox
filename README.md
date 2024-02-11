@@ -1,5 +1,12 @@
 # dynamodb-sandbox
 
+## dynamodbがなにかざっくり知る
+
+- [Amazon DynamoDB Deep Dive | AWS Summit Tokyo 2019 - YouTube](https://www.youtube.com/watch?v=16RYHfe89WY)
+	- わかりやすかった。
+- [Core components of Amazon DynamoDB - Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html)
+	- 動画のあとに読んだらいい感じ。
+
 ## ローカル用のaws configファイルを参照するように設定
 
 ```sh
@@ -146,6 +153,8 @@ DynamoDB localを動かしながら、connection localを選択する。
 
 ## 設計
 
-[Modeling data with Amazon DynamoDB - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/dynamodb-data-modeling/welcome.html) にベストプラクティスがまとまっているみたい。
-
-ちなみに、これは[AWS 規範的ガイダンス](https://aws.amazon.com/jp/prescriptive-guidance/?apg-all-cards.sort-by=item.additionalFields.sortDate&apg-all-cards.sort-order=desc&awsf.apg-new-filter=*all&awsf.apg-content-type-filter=*all&awsf.apg-code-filter=*all&awsf.apg-category-filter=*all&awsf.apg-rtype-filter=*all&awsf.apg-isv-filter=*all&awsf.apg-product-filter=*all&awsf.apg-env-filter=*all&apg-all-cards.q=dynamodb&apg-all-cards.q_operator=AND&awsm.page-apg-all-cards=1)でdynamodbと検索すると出てきた。
+- [[AWS Black Belt Online Seminar] Amazon DynamoDB Advanced Design Pattern 資料及び QA 公開 | Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/webinar-bb-dynamodb-advanced-design-pattern-2018/)
+  - 動画で触れられてた。見れてないけど。
+- [Modeling data with Amazon DynamoDB - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/dynamodb-data-modeling/welcome.html)
+  - ベストプラクティスがまとまっているみたい。
+  - ちなみに、これは[AWS 規範的ガイダンス](https://aws.amazon.com/jp/prescriptive-guidance/?apg-all-cards.sort-by=item.additionalFields.sortDate&apg-all-cards.sort-order=desc&awsf.apg-new-filter=*all&awsf.apg-content-type-filter=*all&awsf.apg-code-filter=*all&awsf.apg-category-filter=*all&awsf.apg-rtype-filter=*all&awsf.apg-isv-filter=*all&awsf.apg-product-filter=*all&awsf.apg-env-filter=*all&apg-all-cards.q=dynamodb&apg-all-cards.q_operator=AND&awsm.page-apg-all-cards=1)でdynamodbと検索すると出てきた。
